@@ -1,0 +1,18 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello from Flask!'
+
+@app.route('/pizzapasta')
+def pizza_Time():
+    return '<h1>I like Pizza, and Pasta<h1>'
+
+#You can route to pages that are context sensitive. Although basic, you can type whatever you want in any webpage where the the format is "/thing/<thing>" after the second slash.
+
+@app.route('/manager/<complaint>')
+def manager(complaint):
+    return "We apologise for the problem, you're complaint about %s has been brought to our internal feedback team! Thank you for the feedback. " % complaint
+
