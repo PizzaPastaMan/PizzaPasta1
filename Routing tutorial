@@ -1,4 +1,8 @@
-from flask import Flask
+from flask import Flask, render_template, flash, redirect, url_for, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -16,3 +20,9 @@ def pizza_Time():
 def manager(complaint):
     return "We apologise for the problem, you're complaint about %s has been brought to our internal feedback team! Thank you for the feedback. " % complaint
 
+@app.route('/login/<name>', methods=['GET', 'POST'])
+def login(name):
+    if name == 'customer': 
+        return pizza_Time
+    if name == 'Owner': 
+        return render_template('index.html')
